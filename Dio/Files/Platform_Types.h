@@ -1,0 +1,7 @@
+#ifndef PLATFROM_TYPES_H
+#define PLATFROM_TYPES_H
+
+
+
+
+#endif /* PLATFROM_TYPES_H */
