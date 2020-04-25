@@ -5,9 +5,22 @@
 
 
 
+/************************** Macros **************************/
 
-
-
+/**
+ * @brief A macro used to validate channel group id
+ *
+ */
+#define DIO_IS_CHANNEL_GROUP_VALID(group) 	(                  \
+											(group == 0x01) || \
+											(group == 0x03) || \
+											(group == 0x07) || \
+											(group == 0x0F) || \
+											(group == 0x1F) || \
+											(group == 0x3F) || \
+											(group == 0x7F) || \
+											(group == 0xFF)    \
+											)
 
 
 
@@ -296,3 +309,91 @@ if (LocalError == E_OK )
 		/* Nothing */
 	}
 }
+
+
+
+/************************** Team 5 **************************/
+/*Authors :
+			1)Ali Samir 
+			2)Amr El-Noby
+			3)Hazem Mekawy
+			4)Mira Zekry
+			5)Mariam El-Shakafi
+
+Version : 1.0.0
+Date:4/26/2020
+*/
+
+
+/*    this needed defines for functions 					*/
+/*      1) Dio_ReadChannelGroup 								*/
+/*      2) Dio_WriteChannelGroup 									*/
+
+
+/**
+ * @brief Reads the value of a specified channel group
+ * 
+ * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
+ * @return Dio_PortLevelType is the value of the group (a range from 0 to 255)
+ *
+ */
+
+Dio_PortLevelType Dio_ReadChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr )
+{
+	/* Used to store SREG value before entering critical section */
+	uint8 sreg;
+	Dio_PortLevelType groupLevel;
+	
+	#if DioDevErrorDetect == DET_ON
+	if ( NULL == ChannelGroupIdPtr)
+	{
+		Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_READ_CHANNEL_GROUP_SID, DIO_E_PARAM_POINTER);
+	}
+	if (!DIO_IS_CHANNEL_GROUP_VALID((ChannelGroupIdPtr->mask >> ChannelGroupIdPtr->offset))
+	{
+		Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_READ_CHANNEL_GROUP_SID, DIO_E_PARAM_INVALID_GROUP);
+	}
+	#endif
+
+	sereg = SREG;
+	_CLI();
+	groupLevel = (((*(ChannelGroupIdPtr->port))&(ChannelGroupIdPtr->mask)) >> (ChannelGroupIdPtr->offset));
+	SREG = sreg;
+	
+	return groupLevel;
+
+}
+
+
+/**
+ * @brief Writes values to a specified channel group
+ * 
+ * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
+ * @param Level contains the values to be written on the group
+ *
+ */
+ 
+void Dio_WriteChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level )
+{
+	/* Used to store SREG value before entering critical section */
+	uint8 sreg;
+	Dio_PortLevelType groupLevel;
+	
+	#if DioDevErrorDetect == DET_ON
+	if ( NULL == ChannelGroupIdPtr)
+	{
+		Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_WRITE_CHANNEL_GROUP_SID, DIO_E_PARAM_POINTER);
+	}
+	if (!DIO_IS_CHANNEL_GROUP_VALID((ChannelGroupIdPtr->mask >> ChannelGroupIdPtr->offset))
+	{
+		Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_WRITE_CHANNEL_GROUP_SID, DIO_E_PARAM_INVALID_GROUP);
+	}
+	#endif
+
+	sereg = SREG;
+	_CLI();
+	*(ChannelGroupIdPtr->port) |= (Level<<(ChannelGroupIdPtr->offset))&(ChannelGroupIdPtr->mask);
+	SREG = sreg;
+
+}
+

@@ -70,15 +70,23 @@
 typedef uint8 Dio_ChannelType;
 
 /* Type definition for Dio_ChannelType used by the Dio API's */
-typedef uint8 Dio_PortType;
+typedef uint8* Dio_PortType;
 typedef uint8 Dio_LevelType;
 typedef uint8 Dio_PortLevelType;
 
-typedef struct Dio_ChannelGroup{
-	uint8 mask;
+
+/**
+ * @brief typedefs used for Channel Groups
+ *
+ */
+typedef uint8 Dio_ChannelGroupMaskType;
+
+typedef struct 
+{
+	Dio_ChannelGroupMaskType mask;
 	uint8 offset;
 	Dio_PortType port;
-}Dio_ChannelGroupType;
+} Dio_ChannelGroupType;
 
 
 #define DIO_PORT_LEVEL_HIGH 				((Dio_PortLevelType) 0xFF)
@@ -147,13 +155,23 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
  */
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level);
 
-/*
+/**
+ * @brief Reads the value of a specified channel group
+ * 
+ * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
+ * @return Dio_PortLevelType is the value of the group (a range from 0 to 255)
+ *
  */
-Dio_PortLevelType Dio_ReadChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr);
+Dio_PortLevelType Dio_ReadChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr );
 
-/*
+/**
+ * @brief Writes values to a specified channel group
+ * 
+ * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
+ * @param Level contains the values to be written on the group
+ *
  */
-void Dio_WriteChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level);
+void Dio_WriteChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level );
 
 /*
  */
