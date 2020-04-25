@@ -1,7 +1,7 @@
 /**
  * @file Compiler.h
  * @author Mark & May
- * @brief This is the user interface for the compiler
+ * @brief This is the user interface for the compiler module
  * @version 1.0.0
  * @date 2020-04-25
  * 
@@ -13,6 +13,29 @@
 #ifndef COMPILER_H
 #define COMPILER_H
 #include "Compiler_Cfg.h"
+
+/**
+ * @brief The module ID
+ * 
+ */
+#define COMPILER_MODULE_ID                             198U
+
+/**
+ * @brief The AUTOSAR version
+ * 
+ */
+#define COMPILER_AR_RELEASE_MAJOR_VERSION              4U
+#define COMPILER_AR_RELEASE_MINOR_VERSION              3U
+#define COMPILER_AR_RELEASE_REVISION_VERSION           1U
+
+/**
+ * @brief The module version
+ * 
+ */
+#define COMPILER_SW_MAJOR_VERSION                      1U
+#define COMPILER_SW_MINOR_VERSION                      0U
+#define COMPILER_SW_PATCH_VERSION                      0U
+
 
 /* For Automatic Type */
 #define AUTOMATIC

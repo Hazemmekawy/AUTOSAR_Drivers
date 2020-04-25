@@ -1,7 +1,7 @@
 /**
  * @file Compiler_Cfg.h
  * @author Mark & May
- * @brief These are the configurations for compiler
+ * @brief These are the configurations for compiler module
  * @version 1.0.0
  * @date 2020-04-25
  * 

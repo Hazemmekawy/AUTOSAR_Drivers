@@ -20,7 +20,23 @@
 #include "Platform_Types.h"
 #include "Compiler.h"
 
+
+
+#define STD_MODULE_ID                                 197U
+
+
+/* Module Version 1.0.0 */
+#define STD_SW_MAJOR_VERSION                           1U
+#define STD_SW_MINOR_VERSION                           0U
+#define STD_SW_PATCH_VERSION                           0U
+
+/* AUTOSAR Version 4.3.1 */
+#define STD_AR_RELEASE_MAJOR_VERSION                   4U
+#define STD_AR_RELEASE_MINOR_VERSION                   3U
+#define STD_AR_RELEASE_REVISION_VERSION                1U
+
 typedef uint8 Std_ReturnType ;
+
 /*  request the version of a BSW module */
 typedef struct
 {

@@ -17,6 +17,22 @@
 #ifndef PLATFROM_TYPES_H
 #define PLATFROM_TYPES_H
 
+/*********************** PUBLISHED INFORMATION ELEMENTS ***********************/
+
+/* Module Identifier */
+#define PLATFORM_MODULE_ID						199U
+
+/* AUTOSAR Release Version */
+#define PLATFORM_AR_RELEASE_MAJOR_VERSION		4U
+#define PLATFORM_AR_RELEASE_MINOR_VERSION		3U
+#define PLATFORM_AR_RELEASE_REVISION_VERSION	1U
+
+/* Module Version */
+#define PLATFORM_SW_MAJOR_VERSION				1U
+#define PLATFORM_SW_MINOR_VERSION				0U
+#define PLATFORM_SW_PATCH_VERSION				0U
+
+
 /***************************** TYPE DEFINITIONS *******************************/
 
 typedef unsigned char boolean;
