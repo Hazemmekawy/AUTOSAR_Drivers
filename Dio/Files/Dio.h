@@ -197,5 +197,13 @@ void Dio_GetVersionInfo(Std_VersionInfoType* VersionInfo);
 #endif
 
 
+/*
+ */
+#if (DIO_DevErrorDetect_API == STD_ON)
+void Dio_DevErrorDetect(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId);
+#endif
+
+
+
 
 #endif /* DIO_H_ */

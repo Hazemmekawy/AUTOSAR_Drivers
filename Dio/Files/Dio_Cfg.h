@@ -41,6 +41,10 @@
 /* Pre-Compile option for presence of Dio_FlipChannel API */
 #define DIO_FLIP_CHANNEL_API					(STD_ON)
 
+/* Pre-Compile option for development error detection API */
+#define DIO_DevErrorDetect_API					(STD_OFF)
+
+
 
 /* Number of the configured Dio Channel */
 #define DIO_CONFIGURED_CHANNELS					(3U)
