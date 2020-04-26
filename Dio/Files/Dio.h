@@ -184,7 +184,7 @@ void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level);
 
 /*
  */
-#if (DIO_FILP_CHANNEL_API == STD_ON)
+#if (DIO_FLIP_CHANNEL_API == STD_ON)
 Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId);
 #endif
 
