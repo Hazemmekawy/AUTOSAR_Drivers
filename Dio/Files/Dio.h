@@ -70,7 +70,9 @@
 typedef uint8 Dio_ChannelType;
 
 /* Type definition for Dio_ChannelType used by the Dio API's */
-typedef uint8* Dio_PortType;
+/* [SWS_Dio_00183] Name: Dio_PortType, Type: uint8
+*/
+typedef uint8 Dio_PortType;
 typedef uint8 Dio_LevelType;
 typedef uint8 Dio_PortLevelType;
 
