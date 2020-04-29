@@ -12,8 +12,6 @@
 #ifndef DIO_H_
 #define DIO_H_
 
-
-
 /*
  * 	Module Identifier
  */
@@ -33,8 +31,6 @@
 #define DIO_AR_RELEASE_MAJOR_VERSION		(4U)
 #define DIO_AR_RELEASE_MINOR_VERSION		(3U)
 #define DIO_AR_RELEASE_PATCH_VERSION		(1U)
-
-
 
 
 /*
@@ -59,6 +55,31 @@
 #endif
 
 
+
+/**
+ * @brief A macro used to validate channel group id
+ *
+ */
+#define DIO_IS_CHANNEL_GROUP_VALID(group) 	(                  \
+											(group == 0x01) || \
+											(group == 0x03) || \
+											(group == 0x07) || \
+											(group == 0x0F) || \
+											(group == 0x1F) || \
+											(group == 0x3F) || \
+											(group == 0x7F) || \
+											(group == 0xFF)    \
+											)
+
+#define DIO_READ_CHANNEL_SID 			    0x00
+#define DIO_WRITE_PORT_SID	 			    0x03
+#define DIO_GET_VERSION_INFO_PORT_SID	    0x12
+#define DIO_WRITE_CHANNEL_SID               0x01
+#define DIO_READ_PORT_SID                   0x02
+#define DIO_FLIP_CHANNEL_SID                0x11
+
+
+#define DIO_INSTANCE_ID    0
 
 /********************************************************************************************
  * 									Dio Module Type definitions
@@ -94,8 +115,8 @@ typedef struct Dio_ChannelGroup{
 }Dio_ChannelGroupType;
 
 
-#define DIO_PORT_LEVEL_HIGH 				((Dio_PortLevelType) 0xFF)
-#define DIO_PORT_LEVEL_LOW  				((Dio_PortLevelType) 0x00)
+#define DIO_PORT_LEVEL_HIGH 			((Dio_PortLevelType) 0xFF)
+#define DIO_PORT_LEVEL_LOW  			((Dio_PortLevelType) 0x00)
 
 
 /********************************************************************************************
@@ -145,9 +166,6 @@ typedef struct Dio_ChannelGroup{
 #define DIO_PORT_B			((uint8) 0x52)
 #define DIO_PORT_C			((uint8) 0x53)
 #define DIO_PORT_D			((uint8) 0x54)
-
-
-
 
 /********************************************************************************************
  * 							Function Prototypes

@@ -31,10 +31,6 @@
 #define DIO_CFG_AR_RELEASE_PATCH_VERSION			(1U)
 
 
-
-
-
-
 /* Pre-Compile option for version information API */
 #define DIO_VERSION_INFO_API					(STD_ON)
 
@@ -50,7 +46,6 @@
 /* Maximum number of Dio Ports */
 #define MAX_NUM_PORTS							(4U)
 
-
 /* Number of the configured Dio Channel */
 #define DIO_CONFIGURED_CHANNELS					(3U)
 
@@ -59,8 +54,6 @@
 
 /* Number of the configured Dio Channel Group */
 #define DIO_CONFIGURED_CHANNEL_GROUP			(1U)
-
-
 
 
 /* Channel Index in the Array of configuration structure in Dio_Lcfg.c */
@@ -79,7 +72,6 @@
 #define DioCfg_LED3_PORT_NUM						((Dio_PortType) 2)
 
 
-
 /* DIO Configured Port Index*/
 #define DioCfg_PORT1_ID_INDEX						((uint8) 0x00)
 #define DioCfg_PORT1_NUM							((Dio_PortType) 2)
@@ -94,36 +86,4 @@
 #define DioCfg_SEVENSEG_CHANNEL_GROUP_OFFSET		((uint8) 0x01)
 
 
-
-
-
-
-
 #endif /* DIO_CFG_H_ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

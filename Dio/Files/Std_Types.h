@@ -8,7 +8,7 @@
 **  PLATFORM     :  AVR                                                       **
 **                                                                            **
 **  AUTHOR       : Nada Mohamed                                               **
-**                                                                            **                                                                           **
+**                                                                            **
 **  DESCRIPTION  : Dio standard type  header file                             **
 **                                                                            **
 **  SPECIFICATION(S) : Standard types , AUTOSAR Release 4.3.1                 **
@@ -20,10 +20,7 @@
 #include "Platform_Types.h"
 #include "Compiler.h"
 
-
-
 #define STD_MODULE_ID                                 197U
-
 
 /* Module Version 1.0.0 */
 #define STD_SW_MAJOR_VERSION                           1U

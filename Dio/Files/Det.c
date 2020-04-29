@@ -1,3 +1,14 @@
+/**
+ * @file Det.c
+ * @author Team 5
+ * @brief This is the user interface for the Det module
+ * @version 1.0.0
+ * @date 2020-04-25
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include "Det.h"
 
 

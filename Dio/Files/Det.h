@@ -36,8 +36,6 @@
 
 
 
-
-
 /* Include AUTOSAR standard types of  */
 #include "Std_Types.h"
 
