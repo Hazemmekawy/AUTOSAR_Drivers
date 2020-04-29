@@ -42,8 +42,13 @@
 #define DIO_FLIP_CHANNEL_API					(STD_ON)
 
 /* Pre-Compile option for development error detection API */
-#define DIO_DevErrorDetect_API					(STD_OFF)
+#define DIO_ErrorDetect_API						(STD_OFF)
 
+/* Maximum number of Dio channels */
+#define MAX_NUM_PINS							(32U)
+
+/* Maximum number of Dio Ports */
+#define MAX_NUM_PORTS							(4U)
 
 
 /* Number of the configured Dio Channel */

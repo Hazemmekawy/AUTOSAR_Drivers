@@ -37,8 +37,6 @@
 
 
 
-
-
 /*
  *	Include Standard types of AUTOSAR Version 4.3.1
  */
@@ -66,29 +64,34 @@
  * 									Dio Module Type definitions
  ********************************************************************************************/
 
-/* Type definition for Dio_ChannelType used by the Dio API's */
+/**
+ * @brief Type definition for Dio_ChannelType used by the Dio API's
+ */
 typedef uint8 Dio_ChannelType;
 
-/* Type definition for Dio_ChannelType used by the Dio API's */
-/* [SWS_Dio_00183] Name: Dio_PortType, Type: uint8
-*/
+/**
+ * @brief Type definition used for ports
+ */
 typedef uint8 Dio_PortType;
-typedef uint8 Dio_LevelType;
-typedef uint8 Dio_PortLevelType;
-
 
 /**
- * @brief typedefs used for Channel Groups
- *
+ * @brief Type definition used for logical level of channels
  */
-typedef uint8 Dio_ChannelGroupMaskType;
+typedef uint8 Dio_LevelType;
 
-typedef struct 
-{
-	Dio_ChannelGroupMaskType mask;
+/**
+ * @brief Type definition used for logical level of ports
+ */
+typedef uint8 Dio_PortLevelType;
+
+/**
+ * @brief Type definition structure to settings of channel group
+ */
+typedef struct Dio_ChannelGroup{
+	uint8 mask;
 	uint8 offset;
 	Dio_PortType port;
-} Dio_ChannelGroupType;
+}Dio_ChannelGroupType;
 
 
 #define DIO_PORT_LEVEL_HIGH 				((Dio_PortLevelType) 0xFF)
@@ -98,50 +101,50 @@ typedef struct
 /********************************************************************************************
  * 									Define values
  ********************************************************************************************/
-#define DIO_CHANNEL_A0		((uint8) 0x00)
-#define DIO_CHANNEL_A1		((uint8) 0x01)
-#define DIO_CHANNEL_A2		((uint8) 0x02)
-#define DIO_CHANNEL_A3		((uint8) 0x03)
-#define DIO_CHANNEL_A4		((uint8) 0x04)
-#define DIO_CHANNEL_A5		((uint8) 0x05)
-#define DIO_CHANNEL_A6		((uint8) 0x06)
-#define DIO_CHANNEL_A7		((uint8) 0x07)
+#define DIO_CHANNEL_1		((uint8) 0x10)
+#define DIO_CHANNEL_1		((uint8) 0x11)
+#define DIO_CHANNEL_2		((uint8) 0x12)
+#define DIO_CHANNEL_3		((uint8) 0x13)
+#define DIO_CHANNEL_4		((uint8) 0x14)
+#define DIO_CHANNEL_5		((uint8) 0x15)
+#define DIO_CHANNEL_6		((uint8) 0x16)
+#define DIO_CHANNEL_7		((uint8) 0x17)
 
 
-#define DIO_CHANNEL_B0		((uint8) 0x00)
-#define DIO_CHANNEL_B1		((uint8) 0x01)
-#define DIO_CHANNEL_B2		((uint8) 0x02)
-#define DIO_CHANNEL_B3		((uint8) 0x03)
-#define DIO_CHANNEL_B4		((uint8) 0x04)
-#define DIO_CHANNEL_B5		((uint8) 0x05)
-#define DIO_CHANNEL_B6		((uint8) 0x06)
-#define DIO_CHANNEL_B7		((uint8) 0x07)
+#define DIO_CHANNEL_8		((uint8) 0x20)
+#define DIO_CHANNEL_9		((uint8) 0x21)
+#define DIO_CHANNEL_10		((uint8) 0x22)
+#define DIO_CHANNEL_11		((uint8) 0x23)
+#define DIO_CHANNEL_12		((uint8) 0x24)
+#define DIO_CHANNEL_13		((uint8) 0x25)
+#define DIO_CHANNEL_14		((uint8) 0x26)
+#define DIO_CHANNEL_15		((uint8) 0x27)
 
 
-#define DIO_CHANNEL_C0		((uint8) 0x00)
-#define DIO_CHANNEL_C1		((uint8) 0x01)
-#define DIO_CHANNEL_C2		((uint8) 0x02)
-#define DIO_CHANNEL_C3		((uint8) 0x03)
-#define DIO_CHANNEL_C4		((uint8) 0x04)
-#define DIO_CHANNEL_C5		((uint8) 0x05)
-#define DIO_CHANNEL_C6		((uint8) 0x06)
-#define DIO_CHANNEL_C7		((uint8) 0x07)
+#define DIO_CHANNEL_16		((uint8) 0x30)
+#define DIO_CHANNEL_17		((uint8) 0x31)
+#define DIO_CHANNEL_18		((uint8) 0x32)
+#define DIO_CHANNEL_19		((uint8) 0x33)
+#define DIO_CHANNEL_20		((uint8) 0x34)
+#define DIO_CHANNEL_21		((uint8) 0x35)
+#define DIO_CHANNEL_22		((uint8) 0x36)
+#define DIO_CHANNEL_23		((uint8) 0x37)
 
 
-#define DIO_CHANNEL_D0		((uint8) 0x00)
-#define DIO_CHANNEL_D1		((uint8) 0x01)
-#define DIO_CHANNEL_D2		((uint8) 0x02)
-#define DIO_CHANNEL_D3		((uint8) 0x03)
-#define DIO_CHANNEL_D4		((uint8) 0x04)
-#define DIO_CHANNEL_D5		((uint8) 0x05)
-#define DIO_CHANNEL_D6		((uint8) 0x06)
-#define DIO_CHANNEL_D7		((uint8) 0x07)
+#define DIO_CHANNEL_24		((uint8) 0x40)
+#define DIO_CHANNEL_25		((uint8) 0x41)
+#define DIO_CHANNEL_26		((uint8) 0x42)
+#define DIO_CHANNEL_27		((uint8) 0x43)
+#define DIO_CHANNEL_28		((uint8) 0x44)
+#define DIO_CHANNEL_29		((uint8) 0x45)
+#define DIO_CHANNEL_30		((uint8) 0x46)
+#define DIO_CHANNEL_31		((uint8) 0x47)
 
 
-#define DIO_PORT_A			((uint8) 0x01)
-#define DIO_PORT_B			((uint8) 0x02)
-#define DIO_PORT_C			((uint8) 0x03)
-#define DIO_PORT_D			((uint8) 0x04)
+#define DIO_PORT_A			((uint8) 0x51)
+#define DIO_PORT_B			((uint8) 0x52)
+#define DIO_PORT_C			((uint8) 0x53)
+#define DIO_PORT_D			((uint8) 0x54)
 
 
 
@@ -149,42 +152,62 @@ typedef struct
 /********************************************************************************************
  * 							Function Prototypes
  ********************************************************************************************/
-/*
+
+/**
+ * @brief Returns the value of the specified DIO channel.
+ * @param ChannelId: ID of DIO channel
+ * @return Dio_LevelType:
+ * 					- STD_HIGH
+ *					- STD_LOW
  */
 Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
 
-/*
+/**
+ * @brief Service to set a level of a channel
+ * @param ChannelId: ID of DIO channel
+ * @param Level: Value to be written
+ * @return: None
  */
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level);
 
 /**
- * @brief Reads the value of a specified channel group
- * 
- * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
- * @return Dio_PortLevelType is the value of the group (a range from 0 to 255)
- *
+ * @brief This Service reads a subset of the adjoining bits of a port
+ * @param ChannelGroupIdPtr: Pointer to ChannelGroup
+ * @return Dio_PortLevelType: Level of a subset of the adjoining bits of a port
  */
-Dio_PortLevelType Dio_ReadChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr );
+Dio_PortLevelType Dio_ReadChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr);
 
 /**
- * @brief Writes values to a specified channel group
- * 
- * @param ChannelGroupIdPtr is a pointer to struct containing group info (Port, mask, offset)
- * @param Level contains the values to be written on the group
- *
+ * @brief Service to set a subset of the adjoining bits of a port to a specified level
+ * @param ChannelGroupIdPtr: Pointer to ChannelGroup
+ * @param Level: Value to be written
+ * @return None
  */
-void Dio_WriteChannelGroup( const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level );
+void Dio_WriteChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level);
 
-/*
+/**
+ * @brief Returns the level of all channels of that port
+ * @param PortId: ID of DIO Port
+ * @return Dio_PortLevelType: Level of all channels of that port
  */
 Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId);
 
-/*
+/**
+ * @brief Service to set a value of the port
+ * @param PortId: ID of DIO Port
+ * @param Level: Value to be written
+ * @return None
  */
 void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level);
 
 
-/*
+/**
+ * @brief Service to flip (change from 1 to 0 or from 0 to 1) the level of a channel and
+ * 			return the level of the channel after flip
+ * @param ChannelId: ID of DIO channel
+ * @return Dio_LevelType:
+ * 					- STD_HIGH
+ * 					- STD_LOW
  */
 #if (DIO_FLIP_CHANNEL_API == STD_ON)
 Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId);
@@ -192,19 +215,14 @@ Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId);
 
 
 
-/*
+/**
+ * @brief Service to get the version information of this module
+ * @param VersionInfo: Pointer to where to store the version information of this modul
+ * @return None
  */
 #if (DIO_VERSION_INFO_API == STD_ON)
 void Dio_GetVersionInfo(Std_VersionInfoType* VersionInfo);
 #endif
-
-
-/*
- */
-#if (DIO_DevErrorDetect_API == STD_ON)
-void Dio_DevErrorDetect(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId);
-#endif
-
 
 
 
