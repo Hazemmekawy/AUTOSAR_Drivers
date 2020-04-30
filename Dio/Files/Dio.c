@@ -13,6 +13,7 @@
 //#define SET_BIT(reg, n)          (__asm__("Sbi reg, n"))
 //#define GET_BIT(reg, n)          (((reg) >> (n)) & 1)
 
+/* from team 3*/			
 /* This global array that contains the ports values */
 u8 Global_Port[MAX_NUM_PORTS];
 
@@ -26,6 +27,10 @@ u8 Global_Port[MAX_NUM_PORTS];
 Version : 1.0.0
 Date:4/26/2020
 */
+
+/*    this needed defines for functions 					*/
+/*      1) Dio_ReadChannelGroup 								*/
+/*      2) Dio_WriteChannelGroup 									*/
 
 /**
  * @brief Reads the value of a specified channel group
@@ -447,40 +452,40 @@ Dio_LevelType Dio_ReadChannel ( Dio_ChannelType ChannelId )
 		{
 			/*[SWS_Dio_00084]:the Dio module’s read functions shall provide the value of the output register, 
 			when they are used on a channel which is configured as an output channel*/
-			case DIO_DIO_PORT_A :
+			case DIO_PORT_B :
 				if (GET_BIT(DDRA,Pin) == OUTPUT)
 				{
-					DIO_Value =GET_BIT(Global_Port[DIO_DIO_PORT_B],Pin);
+					DIO_Value =GET_BIT(Global_Port[DIO_PORT_B],Pin);
 				}
 				else 
 				{
 					DIO_Value = GET_BIT(PINA,Pin);
 				}
 			break;
-			case DIO_DIO_PORT_B :
+			case DIO_PORT_B :
 				if (GET_BIT(DDRB,Pin) == OUTPUT)
 				{
-					DIO_Value =GET_BIT(Global_Port[DIO_DIO_PORT_B],Pin);
+					DIO_Value =GET_BIT(Global_Port[DIO_PORT_B],Pin);
 				}
 				else 
 				{
 					DIO_Value = GET_BIT(PINB,Pin);
 				}
 			break;
-			case DIO_DIO_PORT_C :
+			case DIO_PORT_C :
 				if (GET_BIT(DDRC,Pin) == OUTPUT)
 				{
-					DIO_Value =GET_BIT(Global_Port[DIO_DIO_PORT_C],Pin);
+					DIO_Value =GET_BIT(Global_Port[DIO_PORT_C],Pin);
 				}
 				else 
 				{
 					DIO_Value = GET_BIT(PINC,Pin);
 				}
 			break;
-			case DIO_DIO_PORT_D :
+			case DIO_PORT_D :
 				if (GET_BIT(DDRD,Pin) == OUTPUT)
 				{
-					DIO_Value =GET_BIT(Global_Port[DIO_DIO_PORT_D],Pin);
+					DIO_Value =GET_BIT(Global_Port[DIO_PORT_D],Pin);
 				}
 				else 
 				{
@@ -498,10 +503,10 @@ Dio_LevelType Dio_ReadChannel ( Dio_ChannelType ChannelId )
 /* Description : This function shall Write the value of specific port               */
 /*Inputs:																    */
 /*		PortId 													 		    */
-/*              DIO_DIO_DIO_DIO_PORT_B                                                             */
-/*              DIO_DIO_PORT_B                                                             */
-/*              DIO_DIO_PORT_C                                                             */
-/*              DIO_DIO_DIO_PORT_D                                                             */
+/*              DIO_DIO_DIO_PORT_B                                                             */
+/*              DIO_PORT_B                                                             */
+/*              DIO_PORT_C                                                             */
+/*              DIO_DIO_PORT_D                                                             */
 /*		Level			   												   */
 /*				Any numeric values from 0x00 upto 0xFF						   */
 /*Outputs: 																   */
@@ -523,7 +528,7 @@ void Dio_WritePort ( Dio_PortType PortId , Dio_PortLevelType Level )
 	/* Check DET enabled or not */
 #if DIO_DevErrorDetect_API == STD_ON
 	/* Check the input arguments */
-	if ( PortId > DIO_DIO_PORT_D )
+	if ( PortId > DIO_PORT_D )
 	{
 		/*Call the *****Det****  Invalid input arguments */
 		Det_ReportError(DIO_MODULE_ID,DIO_INSTANCE_ID,
@@ -544,20 +549,20 @@ void Dio_WritePort ( Dio_PortType PortId , Dio_PortLevelType Level )
 	/*[SWS_DIO_034] function shall set the specified value for the specified port.*/
 		switch (PortId)
 		{
-			case DIO_DIO_PORT_A:
+			case DIO_PORT_A:
 				Port = &PORTA:
 				Ddr  = &DDRA ;
 			break;
-			case DIO_DIO_PORT_B:
+			case DIO_PORT_B:
 				Port = &PORTB:
 				Ddr  = &DDRB;
 			break;
-			case DIO_DIO_PORT_C:
-				Port = &PORTC:
+			case DIO_PORT_C:
+				Port=&PORTC:
 				Ddr  = &DDRC;
 			break;
-			case DIO_DIO_PORT_D:
-				Port = &PORTD:
+			case DIO_PORT_D:
+				Port=&PORTD:
 				Ddr  = &DDRD;
 		}
 		/* [SWS_Dio_00005] (Interruptible read-modify-write sequences are not allowed)*/
@@ -565,14 +570,14 @@ void Dio_WritePort ( Dio_PortType PortId , Dio_PortLevelType Level )
 		sreg = SREG;
 		/* Disable interrupts */
 		_CLI();
-		/*[SWS_Dio_00108] ⌈The Dio_WritePort function shall have no effect on channels 
-			within this port which are configured as input channels.*/
+/*[SWS_Dio_00108] ⌈The Dio_WritePort function shall have no effect on channels 
+within this port which are configured as input channels.*/
 		/* Set the values to the port */
-		PrevPortVal = *Port                ;
-		PrevPortVal &= ~(*Ddr)             ;
-		PrevPortVal |= ((u8)(*Ddr) & Level);
-		*PORT = PrevPortVal               ;
-		Global_Port[PortId] = PrevPortVal ;
+		PrevPortVal=*Port                ;
+		PrevPortVal&=~(*Ddr)             ;
+		PrevPortVal|=((u8)(*Ddr) & Level);
+		*PORT =PrevPortVal               ;
+		Global_Port[PortId] =PrevPortVal ;
 		/* Restore global interrupt flag */
 		SREG = sreg;
 	}
@@ -589,7 +594,8 @@ void Dio_GetVersionInfo ( Std_VersionInfoType* VersionInfo )
 	{
 		/*[SWS_Dio_00114] ----> check the input arguments is NUll Pointer */
 		/*Call the *****Det****  NULL pointer  */
-		Det_ReportError(DIO_MODULE_ID,DIO_INSTANCE_ID, DIO_WRITE_PORT_SID, DIO_E_PARAM_POINTER);
+		Det_ReportError(DIO_MODULE_ID,DIO_INSTANCE_ID,
+				DIO_WRITE_PORT_SID, DIO_E_PARAM_POINTER);
 		/* Set the local error to NOK */
 		LocalError = E_NOT_OK;
 	}
