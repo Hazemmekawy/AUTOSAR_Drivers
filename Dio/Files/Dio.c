@@ -452,7 +452,7 @@ Dio_LevelType Dio_ReadChannel ( Dio_ChannelType ChannelId )
 		{
 			/*[SWS_Dio_00084]:the Dio module’s read functions shall provide the value of the output register, 
 			when they are used on a channel which is configured as an output channel*/
-			case DIO_PORT_B :
+			case DIO_PORT_A :
 				if (GET_BIT(DDRA,Pin) == OUTPUT)
 				{
 					DIO_Value =GET_BIT(Global_Port[DIO_PORT_B],Pin);
